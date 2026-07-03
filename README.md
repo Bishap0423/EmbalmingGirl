@@ -6,11 +6,11 @@
 
 ## 当前状态
 
-- 阶段：开发文档与规则规格冻结
+- 阶段：M5 Web 游戏界面完成，下一阶段为 M6 联调、验收与交付
 - 规则来源：
   - `Embalming_Girl_(Rules_-_JP).jpg`：日文官方规则书，规则裁定的主要依据
   - `Embalming_Girl_(Rules-English).pdf`：英文规则与卡图，角色数据和开发期临时素材来源
-- 代码：尚未开始
+- 代码：已实现权威游戏引擎、本地多人服务及创建房间到终局的响应式 Web 界面
 - 美术：PDF 卡图仅作为开发期临时资源，正式资源将独立替换
 
 ## 文档导航
@@ -32,3 +32,20 @@
 - JSON/JSONL 对局快照与事件回放
 
 具体版本在 M0 建库时锁定。
+
+## 本地启动
+
+```bash
+make bootstrap
+make dev-server
+```
+
+另开终端启动 Web：
+
+```bash
+pnpm assets:temporary
+make dev-web
+```
+
+- API 文档：`http://127.0.0.1:8000/docs`
+- Web：`http://127.0.0.1:5173`

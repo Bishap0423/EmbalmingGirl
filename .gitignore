@@ -21,6 +21,8 @@ data/games/
 # Local and temporary art
 assets/temporary/*
 !assets/temporary/README.md
+apps/web/public/assets/temporary/cards/*
+!apps/web/public/assets/temporary/cards/README.md
 
 # Editors and operating systems
 .DS_Store

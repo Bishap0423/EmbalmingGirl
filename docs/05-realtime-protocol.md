@@ -8,6 +8,20 @@
 
 首版不使用 GraphQL。
 
+当前实现端点：
+
+| 方法 | 路径 | 用途 |
+|---|---|---|
+| `POST` | `/api/rooms` | 创建房间并取得房主席位令牌 |
+| `POST` | `/api/rooms/{id}/players` | 加入房间 |
+| `PUT` | `/api/rooms/{id}/ready` | 设置准备状态 |
+| `POST` | `/api/rooms/{id}/start` | 房主开始对局 |
+| `GET` | `/api/rooms/{id}` | 获取按席位裁剪的重连快照 |
+| `POST` | `/api/rooms/{id}/commands` | 提交游戏命令 |
+| `WS` | `/ws/rooms/{id}?token=...` | 实时快照、命令和重连 |
+
+HTTP 席位认证使用 `X-Player-Token`。令牌不得写入日志或玩家视图。
+
 ## 2. 消息信封
 
 客户端到服务器：
