@@ -2,7 +2,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from embalming_game.models import CardInstance, Phase, PlayerState, Zone
+from embalming_game.models import (
+    CardInstance,
+    DelayedTrigger,
+    PendingDecision,
+    Phase,
+    PlayerState,
+    PrivateReveal,
+    Zone,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -41,4 +49,48 @@ class PhaseChanged:
     phase: Phase
 
 
-GameEvent = GameStarted | CardMoved | PlayerFinished | TurnAdvanced | PhaseChanged
+@dataclass(frozen=True, slots=True)
+class DecisionRequested:
+    decision: PendingDecision
+
+
+@dataclass(frozen=True, slots=True)
+class DecisionSubmitted:
+    decision_id: str
+    player_id: str
+    selections: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class DecisionCleared:
+    decision_id: str
+
+
+@dataclass(frozen=True, slots=True)
+class PrivateInformationRevealed:
+    reveal: PrivateReveal
+
+
+@dataclass(frozen=True, slots=True)
+class TriggerScheduled:
+    trigger: DelayedTrigger
+
+
+@dataclass(frozen=True, slots=True)
+class TriggerRemoved:
+    trigger_id: str
+
+
+GameEvent = (
+    GameStarted
+    | CardMoved
+    | PlayerFinished
+    | TurnAdvanced
+    | PhaseChanged
+    | DecisionRequested
+    | DecisionSubmitted
+    | DecisionCleared
+    | PrivateInformationRevealed
+    | TriggerScheduled
+    | TriggerRemoved
+)

@@ -6,6 +6,7 @@ from enum import StrEnum
 
 class Phase(StrEnum):
     TURN = "turn"
+    RESOLVING = "resolving"
     SCORING = "scoring"
     FINISHED = "finished"
 
@@ -34,6 +35,32 @@ class PlayerState:
 
 
 @dataclass(frozen=True, slots=True)
+class PendingDecision:
+    id: str
+    kind: str
+    ability_card_id: str
+    owner_id: str
+    responders: tuple[str, ...]
+    context: tuple[tuple[str, str], ...] = ()
+    submissions: tuple[tuple[str, tuple[str, ...]], ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class PrivateReveal:
+    viewer_id: str
+    reason: str
+    values: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class DelayedTrigger:
+    id: str
+    kind: str
+    owner_id: str
+    source_card_id: str
+
+
+@dataclass(frozen=True, slots=True)
 class GameState:
     id: str
     ruleset_version: str
@@ -46,6 +73,9 @@ class GameState:
     cards: tuple[CardInstance, ...]
     active_player_id: str | None
     embalming: tuple[str, ...] = ()
+    pending_decision: PendingDecision | None = None
+    private_reveals: tuple[PrivateReveal, ...] = ()
+    delayed_triggers: tuple[DelayedTrigger, ...] = ()
 
     def player(self, player_id: str) -> PlayerState:
         try:

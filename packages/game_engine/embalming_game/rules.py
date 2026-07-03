@@ -1,7 +1,20 @@
 from __future__ import annotations
 
-from embalming_game.commands import GameCommand, PlaySpecial, PlaySuspicion, PlayToEmbalming
-from embalming_game.events import CardMoved, GameEvent, PhaseChanged, PlayerFinished, TurnAdvanced
+from embalming_game.commands import (
+    GameCommand,
+    PlaySpecial,
+    PlaySuspicion,
+    PlayToEmbalming,
+    SubmitDecision,
+)
+from embalming_game.events import (
+    CardMoved,
+    DecisionSubmitted,
+    GameEvent,
+    PhaseChanged,
+    PlayerFinished,
+    TurnAdvanced,
+)
 from embalming_game.models import GameState, Phase, Zone
 from embalming_game.reducer import reduce_event
 
@@ -21,6 +34,26 @@ def _next_active_player(state: GameState, actor_id: str, finishing: bool) -> str
 
 
 def decide(state: GameState, command: GameCommand) -> tuple[GameEvent, ...]:
+    if isinstance(command, SubmitDecision):
+        if state.phase is not Phase.RESOLVING or state.pending_decision is None:
+            raise InvalidCommand("no decision is pending")
+        if command.expected_revision != state.revision:
+            raise InvalidCommand("stale revision")
+        decision = state.pending_decision
+        if command.decision_id != decision.id:
+            raise InvalidCommand("decision is not pending")
+        if command.actor_id not in decision.responders:
+            raise InvalidCommand("not a decision responder")
+        if any(player_id == command.actor_id for player_id, _ in decision.submissions):
+            raise InvalidCommand("decision already submitted")
+        return (
+            DecisionSubmitted(
+                decision_id=decision.id,
+                player_id=command.actor_id,
+                selections=command.selections,
+            ),
+        )
+
     if state.phase is not Phase.TURN:
         raise InvalidCommand("game is not accepting turn actions")
     if command.expected_revision != state.revision:

@@ -23,4 +23,10 @@ class PlaySuspicion(Command):
     target_player_id: str
 
 
-GameCommand = PlaySpecial | PlayToEmbalming | PlaySuspicion
+@dataclass(frozen=True, slots=True)
+class SubmitDecision(Command):
+    decision_id: str
+    selections: tuple[str, ...]
+
+
+GameCommand = PlaySpecial | PlayToEmbalming | PlaySuspicion | SubmitDecision
