@@ -6,11 +6,11 @@
 
 ## 当前状态
 
-- 阶段：M4 本地房间与实时服务完成，下一阶段为 M5 Web 游戏界面
+- 阶段：M5 Web 游戏界面完成，下一阶段为 M6 联调、验收与交付
 - 规则来源：
   - `Embalming_Girl_(Rules_-_JP).jpg`：日文官方规则书，规则裁定的主要依据
   - `Embalming_Girl_(Rules-English).pdf`：英文规则与卡图，角色数据和开发期临时素材来源
-- 代码：已实现权威游戏引擎、本地房间、席位认证、玩家视图投影、HTTP 命令和 WebSocket 重连
+- 代码：已实现权威游戏引擎、本地多人服务及创建房间到终局的响应式 Web 界面
 - 美术：PDF 卡图仅作为开发期临时资源，正式资源将独立替换
 
 ## 文档导航
@@ -43,6 +43,7 @@ make dev-server
 另开终端启动 Web：
 
 ```bash
+pnpm assets:temporary
 make dev-web
 ```
 

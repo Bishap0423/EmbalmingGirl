@@ -3,6 +3,7 @@
   "private": true,
   "packageManager": "pnpm@11.9.0",
   "scripts": {
+    "assets:temporary": "sh scripts/extract_temp_card_art.sh",
     "build": "pnpm --filter @embalming-girl/web build",
     "check": "pnpm --filter @embalming-girl/web check",
     "dev": "pnpm --filter @embalming-girl/web dev",

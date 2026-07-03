@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import asdict
 from typing import Any
 
 from embalming_game.catalog import load_card_catalog
@@ -62,5 +63,5 @@ def project_game(state: GameState, viewer_id: str) -> dict[str, Any]:
         "embalming_count": len(state.embalming),
         "pending_decision": pending_view,
         "private_reveals": private_reveals,
-        "result": state.result,
+        "result": asdict(state.result) if state.result is not None else None,
     }
