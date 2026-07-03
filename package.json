@@ -1,0 +1,11 @@
+{
+  "name": "embalming-girl-workspace",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "build": "pnpm --filter @embalming-girl/web build",
+    "check": "pnpm --filter @embalming-girl/web check",
+    "dev": "pnpm --filter @embalming-girl/web dev",
+    "test": "pnpm --filter @embalming-girl/web test"
+  }
+}

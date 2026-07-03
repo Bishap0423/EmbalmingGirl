@@ -1,0 +1,6 @@
+{
+  "manifest_version": 1,
+  "asset_set": "temporary-pdf",
+  "assets": {},
+  "notes": "Card images will be extracted and mapped before the M5 UI milestone."
+}

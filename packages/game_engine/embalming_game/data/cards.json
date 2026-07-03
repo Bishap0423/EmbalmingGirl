@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "ruleset_version": "2020-06-30-project-ruling-1",
+  "cards": [
+    {
+      "id": "alien",
+      "name_ja": "宇宙人",
+      "name_zh": "宇宙人",
+      "mp": -1,
+      "copies": 1,
+      "victory_priority": 1,
+      "ability": "alien_false_signal",
+      "victory": "self_imprisoned",
+      "art_key": "card.alien"
+    },
+    {
+      "id": "infected",
+      "name_ja": "感染者",
+      "name_zh": "感染者",
+      "mp": 0,
+      "copies": 1,
+      "victory_priority": 2,
+      "ability": "recover_chosen_embalming_card_next_turn",
+      "victory": "embalming_failed",
+      "art_key": "card.infected"
+    },
+    {
+      "id": "criminal",
+      "name_ja": "犯人",
+      "name_zh": "犯人",
+      "mp": 0,
+      "copies": 1,
+      "victory_priority": 3,
+      "ability": "cannot_be_played",
+      "victory": "self_not_imprisoned",
+      "art_key": "card.criminal"
+    },
+    {
+      "id": "accomplice",
+      "name_ja": "共犯者",
+      "name_zh": "共犯者",
+      "mp": 0,
+      "copies": 3,
+      "victory_priority": 3,
+      "ability": "transfer_suspicion",
+      "victory": "criminal_won",
+      "art_key": "card.accomplice"
+    },
+    {
+      "id": "student_council_president",
+      "name_ja": "生徒会長",
+      "name_zh": "学生会长",
+      "mp": 3,
+      "copies": 1,
+      "victory_priority": 4,
+      "ability": "first_player_marker",
+      "victory": "embalming_succeeded",
+      "art_key": "card.student_council_president"
+    },
+    {
+      "id": "class_representative",
+      "name_ja": "学級委員",
+      "name_zh": "学级委员",
+      "mp": 2,
+      "copies": 2,
+      "victory_priority": 4,
+      "ability": "exchange_one_card",
+      "victory": "embalming_succeeded",
+      "art_key": "card.class_representative"
+    },
+    {
+      "id": "prodigy",
+      "name_ja": "秀才",
+      "name_zh": "秀才",
+      "mp": 2,
+      "copies": 1,
+      "victory_priority": 4,
+      "ability": "identify_criminal_with_alien_signal",
+      "victory": "embalming_succeeded",
+      "art_key": "card.prodigy"
+    },
+    {
+      "id": "disciplinary_committee",
+      "name_ja": "風紀委員",
+      "name_zh": "风纪委员",
+      "mp": 1,
+      "copies": 1,
+      "victory_priority": 4,
+      "ability": "inspect_player_hand",
+      "victory": "embalming_succeeded",
+      "art_key": "card.disciplinary_committee"
+    },
+    {
+      "id": "health_committee",
+      "name_ja": "保健委員",
+      "name_zh": "保健委员",
+      "mp": 1,
+      "copies": 2,
+      "victory_priority": 4,
+      "ability": "recover_non_health_used_card",
+      "victory": "embalming_succeeded",
+      "art_key": "card.health_committee"
+    },
+    {
+      "id": "lady",
+      "name_ja": "お嬢様",
+      "name_zh": "大小姐",
+      "mp": 1,
+      "copies": 1,
+      "victory_priority": 4,
+      "ability": "random_draw_then_return",
+      "victory": "self_not_imprisoned",
+      "art_key": "card.lady"
+    },
+    {
+      "id": "library_committee",
+      "name_ja": "図書委員",
+      "name_zh": "图书委员",
+      "mp": 1,
+      "copies": 5,
+      "victory_priority": 4,
+      "ability": "inspect_embalming",
+      "victory": "embalming_succeeded",
+      "art_key": "card.library_committee"
+    },
+    {
+      "id": "newspaper_club",
+      "name_ja": "新聞部",
+      "name_zh": "新闻部",
+      "mp": 1,
+      "copies": 3,
+      "victory_priority": 4,
+      "ability": "pass_card_left_simultaneously",
+      "victory": "embalming_succeeded",
+      "art_key": "card.newspaper_club"
+    },
+    {
+      "id": "go_home_club",
+      "name_ja": "帰宅部",
+      "name_zh": "归宅部",
+      "mp": 0,
+      "copies": 3,
+      "victory_priority": 5,
+      "ability": "exchange_hand_with_embalming",
+      "victory": "no_higher_priority_winner",
+      "art_key": "card.go_home_club"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+build/
+dist/
+
+# Node
+node_modules/
+apps/web/dist/
+*.tsbuildinfo
+
+# Runtime
+data/games/
+*.log
+
+# Local and temporary art
+assets/temporary/*
+!assets/temporary/README.md
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
