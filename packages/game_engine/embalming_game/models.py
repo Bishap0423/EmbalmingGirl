@@ -61,6 +61,17 @@ class DelayedTrigger:
 
 
 @dataclass(frozen=True, slots=True)
+class GameResult:
+    embalming_total: int
+    embalming_succeeded: bool
+    suspicion_totals: tuple[tuple[str, int], ...]
+    imprisoned_player_ids: tuple[str, ...]
+    winner_ids: tuple[str, ...]
+    winning_priority: int | None
+    annihilation: bool
+
+
+@dataclass(frozen=True, slots=True)
 class GameState:
     id: str
     ruleset_version: str
@@ -76,6 +87,7 @@ class GameState:
     pending_decision: PendingDecision | None = None
     private_reveals: tuple[PrivateReveal, ...] = ()
     delayed_triggers: tuple[DelayedTrigger, ...] = ()
+    result: GameResult | None = None
 
     def player(self, player_id: str) -> PlayerState:
         try:

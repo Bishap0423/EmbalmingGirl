@@ -8,6 +8,7 @@ from embalming_game.events import (
     DecisionRequested,
     DecisionSubmitted,
     GameEvent,
+    GameScored,
     GameStarted,
     PhaseChanged,
     PlayerFinished,
@@ -169,6 +170,15 @@ def reduce_event(state: GameState | None, event: GameEvent) -> GameState:
             delayed_triggers=tuple(
                 trigger for trigger in state.delayed_triggers if trigger.id != event.trigger_id
             ),
+        )
+    elif isinstance(event, GameScored):
+        if state.phase is not Phase.SCORING:
+            raise ValueError("game can only be scored in scoring phase")
+        updated = replace(
+            state,
+            phase=Phase.FINISHED,
+            active_player_id=None,
+            result=event.result,
         )
     else:
         raise TypeError(f"unknown event {type(event)!r}")

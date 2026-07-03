@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from embalming_game.models import (
     CardInstance,
     DelayedTrigger,
+    GameResult,
     PendingDecision,
     Phase,
     PlayerState,
@@ -81,6 +82,11 @@ class TriggerRemoved:
     trigger_id: str
 
 
+@dataclass(frozen=True, slots=True)
+class GameScored:
+    result: GameResult
+
+
 GameEvent = (
     GameStarted
     | CardMoved
@@ -93,4 +99,5 @@ GameEvent = (
     | PrivateInformationRevealed
     | TriggerScheduled
     | TriggerRemoved
+    | GameScored
 )
